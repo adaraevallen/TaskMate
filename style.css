@@ -1,0 +1,325 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #263247;
+    line-height: 1.6;
+}
+
+.header {
+    background: #ffffff;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e5e9f2;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #5365d8;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #3b4960;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #5365d8;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 32px auto;
+    padding: 0 20px;
+    min-height: 70vh;
+}
+
+.hero {
+    padding: 28px 0;
+}
+
+.hero h1 {
+    margin: 4px 0;
+    font-size: clamp(28px, 5vw, 38px);
+}
+
+.hero p {
+    color: #68758b;
+}
+
+.eyebrow {
+    color: #5365d8 !important;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.panel {
+    background: #ffffff;
+    border: 1px solid #e7eaf2;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 5px 20px rgba(35, 49, 80, 0.04);
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9dfeb;
+    border-radius: 9px;
+    font: inherit;
+    background: #ffffff;
+    color: #263247;
+    margin-bottom: 8px;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+button,
+.button-link {
+    display: inline-block;
+    padding: 11px 16px;
+    background: #5365d8;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    text-decoration: none;
+    text-align: center;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover,
+.button-link:hover {
+    opacity: 0.88;
+}
+
+button.secondary {
+    background: #e9edff;
+    color: #4656bd;
+}
+
+button.danger {
+    background: #ffe8e8;
+    color: #b83232;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-info {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.task-info h3 {
+    margin: 0 0 4px;
+}
+
+.task-info p {
+    margin: 4px 0;
+    color: #68758b;
+    font-size: 14px;
+}
+
+.task-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.selesai {
+    text-decoration: line-through;
+    color: #7b8798;
+}
+
+.badge {
+    display: inline-block;
+    background: #edf0ff;
+    color: #4656bd;
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.month-nav h2 {
+    margin: 0;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 5px;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px 0;
+    color: #5365d8;
+}
+
+.calendar-day {
+    background: #f7f8fc;
+    border: 1px solid #e7eaf2;
+    border-radius: 8px;
+    min-height: 85px;
+    padding: 7px;
+    overflow-wrap: anywhere;
+}
+
+.calendar-day.hari-ini {
+    border: 2px solid #5365d8;
+    background: #eef0ff;
+}
+
+.calendar-day.kosong {
+    background: transparent;
+    border-color: transparent;
+}
+
+.agenda-mini {
+    margin-top: 5px;
+    padding: 4px;
+    background: #dfe5ff;
+    color: #3547a4;
+    border-radius: 4px;
+    font-size: 11px;
+}
+
+.timer-panel {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.timer-display {
+    font-size: clamp(55px, 12vw, 90px);
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #5365d8;
+    margin: 20px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-buttons {
+    max-width: 320px;
+    margin: 20px auto 0;
+}
+
+.muted {
+    color: #68758b;
+}
+
+footer {
+    text-align: center;
+    padding: 24px;
+    color: #7b8798;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .header {
+        padding: 16px 20px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    .container {
+        padding: 0 12px;
+        margin-top: 16px;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+
+    .task-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .month-nav {
+        justify-content: center;
+    }
+
+    .calendar-grid {
+        gap: 3px;
+    }
+
+    .calendar-day {
+        min-height: 58px;
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    .agenda-mini {
+        font-size: 9px;
+        padding: 2px;
+    }
+
+    .weekday {
+        font-size: 12px;
+    }
+}
