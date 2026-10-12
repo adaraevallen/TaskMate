@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>{% block title %}TaskMate{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="brand">
+                <span class="brand-icon">T</span>
+                TaskMate
+            </a>
+
+            <nav class="navigation">
+                <a href="{{ url_for('index') }}">Daftar Tugas</a>
+                <a href="{{ url_for('kalender') }}">Kalender</a>
+                <a href="{{ url_for('fokus') }}">Timer Fokus</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>TaskMate &copy; {{ 2026 }} — Teman produktivitas belajarmu.</p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

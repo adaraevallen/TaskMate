@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Timer Belajar | TaskMate{% endblock %}
+
+{% block content %}
+{% if berjalan %}
+<meta http-equiv="refresh" content="1">
+{% endif %}
+
+<section class="hero">
+    <p class="eyebrow">POMODORO STUDY SESSION</p>
+    <h1>Timer Belajar</h1>
+    <p>Fokus 25 menit, lalu istirahat 5 menit.</p>
+</section>
+
+<section class="panel timer-panel">
+    <p class="eyebrow">
+        {% if jenis == "Belajar" %}
+            WAKTUNYA FOKUS
+        {% else %}
+            WAKTUNYA ISTIRAHAT
+        {% endif %}
+    </p>
+
+    <h2>{{ jenis }}</h2>
+
+    <div class="timer-display">
+        {{ "%02d"|format(menit) }}:{{ "%02d"|format(detik) }}
+    </div>
+
+    {% if berjalan %}
+        <p class="muted">
+            Timer sedang berjalan. Halaman akan diperbarui otomatis.
+        </p>
+
+        <form action="{{ url_for('reset_fokus') }}" method="POST">
+            <button type="submit" class="danger">Reset Timer</button>
+        </form>
+    {% else %}
+        <p class="muted">
+            Pilih sesi untuk mulai menghitung waktu.
+        </p>
+
+        <form action="{{ url_for('mulai_fokus') }}" method="POST"
+              class="timer-buttons">
+            <button type="submit" name="jenis" value="Belajar">
+                Mulai Belajar · 25 Menit
+            </button>
+
+            <button type="submit" name="jenis" value="Istirahat"
+                    class="secondary">
+                Mulai Istirahat · 5 Menit
+            </button>
+        </form>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Riwayat Sesi</h2>
+
+    {% if riwayat %}
+        {% for item in riwayat %}
+        <article class="task-item">
+            <div class="task-info">
+                <h3>{{ item.jenis }} — {{ item.durasi }} menit</h3>
+                <p>{{ item.waktu }}</p>
+            </div>
+            <span class="badge">Tercatat</span>
+        </article>
+        {% endfor %}
+    {% else %}
+        <p>Belum ada sesi yang selesai.</p>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <h2>Tips Menggunakan Timer</h2>
+    <ul>
+        <li>Mulai sesi belajar selama 25 menit.</li>
+        <li>Usahakan fokus pada satu tugas.</li>
+        <li>Setelah sesi selesai, gunakan waktu istirahat 5 menit.</li>
+        <li>Biarkan halaman timer terbuka agar dapat berganti sesi secara otomatis.</li>
+    </ul>
+</section>
+{% endblock %}

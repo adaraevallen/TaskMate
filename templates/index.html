@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}List Data Belajar | TaskMate{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">STUDY PLANNER</p>
+    <h1>List Data Belajar</h1>
+    <p>Catat tugasmu, atur tenggat, dan selesaikan satu per satu.</p>
+</section>
+
+<section class="panel">
+    <h2>Tambah Tugas Baru</h2>
+
+    <form action="{{ url_for('tambah_tugas') }}" method="POST">
+        <label for="judul">Nama tugas</label>
+        <input id="judul" name="judul" required
+               placeholder="Contoh: Laporan praktikum">
+
+        <label for="mata_kuliah">Mata kuliah</label>
+        <input id="mata_kuliah" name="mata_kuliah"
+               placeholder="Contoh: Dasar Pemrograman">
+
+        <label for="tenggat">Tanggal tenggat</label>
+        <input id="tenggat" type="date" name="tenggat" required>
+
+        <button type="submit">+ Simpan Tugas</button>
+    </form>
+</section>
+
+<section class="panel">
+    <h2>Daftar Tugas</h2>
+
+    {% if tugas %}
+        {% for item in tugas %}
+        <article class="task-item">
+            <div class="task-info">
+                <h3 class="{% if item.selesai %}selesai{% endif %}">
+                    {{ item.judul }}
+                </h3>
+                <p>{{ item.mata_kuliah }}</p>
+                <p>Tenggat: {{ item.tenggat }}</p>
+                <span class="badge">
+                    {% if item.selesai %}Selesai{% else %}Belum selesai{% endif %}
+                </span>
+            </div>
+
+            <div class="task-actions">
+                <form action="{{ url_for('ubah_status', task_id=item.id) }}"
+                      method="POST">
+                    <button type="submit" class="secondary">
+                        {% if item.selesai %}Batalkan{% else %}Tandai selesai{% endif %}
+                    </button>
+                </form>
+
+                <form action="{{ url_for('hapus_tugas', task_id=item.id) }}"
+                      method="POST">
+                    <button type="submit" class="danger">Hapus</button>
+                </form>
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <p>Belum ada tugas. Tambahkan tugas pertamamu di atas!</p>
+    {% endif %}
+</section>
+{% endblock %} 
